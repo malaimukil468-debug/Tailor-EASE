@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TailorEase – Smart Tailor Shop Website | Perfect Stitching, Perfect Style.</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons & FontAwesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Chart.js (for Dashboards) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/visualizer.css">
+</head>
+<body>
+
+  <!-- Sticky Luxury Navbar -->
+  <nav class="navbar navbar-expand-xl navbar-custom">
+    <div class="container-fluid px-lg-5">
+      <!-- Brand Logo -->
+      <a class="navbar-brand" href="index.html">
+        <i class="bi bi-scissors text-primary"></i>
+        <span>TailorEase</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#tailorEaseNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="tailorEaseNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link " href="index.html" data-i18n="nav_home">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html" data-i18n="nav_about">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="services.html" data-i18n="nav_services">Services</a></li>
+          <li class="nav-item"><a class="nav-link " href="gallery.html" data-i18n="nav_gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link " href="fabrics.html" data-i18n="nav_fabrics">Fabrics</a></li>
+          <li class="nav-item"><a class="nav-link " href="designs.html" data-i18n="nav_designs">Designs</a></li>
+          <li class="nav-item"><a class="nav-link " href="measurement.html" data-i18n="nav_measurement">Measurement</a></li>
+          <li class="nav-item"><a class="nav-link " href="appointment.html" data-i18n="nav_appointment">Appointment</a></li>
+          <li class="nav-item"><a class="nav-link " href="pricing.html" data-i18n="nav_pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link " href="blog.html" data-i18n="nav_blog">Blog</a></li>
+          <li class="nav-item"><a class="nav-link " href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+
+        <!-- Right Controls (Search, Theme, i18n, Auth) -->
+        <div class="d-flex align-items-center gap-2">
+          <!-- Search Icon Modal Trigger -->
+          <button class="btn btn-outline-violet rounded-circle p-2" data-bs-toggle="modal" data-bs-target="#searchModal" style="width:40px;height:40px;">
+            <i class="bi bi-search"></i>
+          </button>
+
+          <!-- Language Selector -->
+          <select id="language-selector" class="form-select form-select-sm rounded-pill" style="width:105px; border-color:var(--border-color);">
+            <option value="en">🌐 English</option>
+            <option value="ta">🌐 தமிழ்</option>
+          </select>
+
+          <!-- Dark Mode Toggle Button -->
+          <button id="dark-mode-toggle" class="btn btn-outline-violet rounded-circle p-2" style="width:40px;height:40px;">
+            <i class="bi bi-moon-stars-fill"></i>
+          </button>
+
+          <!-- User Auth / Dashboard Button -->
+                      <a href="login.html" class="btn btn-outline-violet">Login</a>
+            <a href="register.html" class="btn btn-violet d-none d-sm-inline-flex">Register</a>
+                  </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Global Search Overlay Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass-panel p-3">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold"><i class="bi bi-search text-primary me-2"></i>Search TailorEase</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form action="services.php" method="GET" class="d-flex gap-2">
+            <input type="text" name="q" class="form-control form-control-lg rounded-pill" placeholder="Search fabrics, suit styles, blouses, alterations...">
+            <button type="submit" class="btn btn-violet rounded-pill px-4">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<section class="py-5 bg-light border-bottom">
+  <div class="container text-center">
+    <span class="badge bg-secondary-lavender text-primary px-3 py-2 rounded-pill fw-bold text-uppercase">Bespoke Stitching</span>
+    <h1 class="fw-bold display-5 mt-2">Services & Tailoring Catalog</h1>
+    <p class="text-muted max-w-700 mx-auto fs-5">Explore our wide spectrum of custom garment creation, precision alterations, and grand wedding couture.</p>
+
+    <!-- Category Filter Tabs -->
+    <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+      <a href="services.html?cat=all" class="filter-btn active">All Services</a>
+      <a href="services.html?cat=men" class="filter-btn ">Men's Couture</a>
+      <a href="services.html?cat=women" class="filter-btn ">Women's Collection</a>
+      <a href="services.html?cat=kids" class="filter-btn ">Kids Wear</a>
+      <a href="services.html?cat=special" class="filter-btn ">Alterations & Special</a>
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+              <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100 d-flex flex-column">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&auto=format&fit=crop&q=80" alt="Custom Shirt Stitching">
+              <span class="card-tag">MEN</span>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold m-0 text-heading">Custom Shirt Stitching</h5>
+                <span class="price-badge">₹850.00</span>
+              </div>
+              <p class="text-muted small mb-3 flex-grow-1">Precision slim/regular fit handcrafted shirt with personal monogramming.</p>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <small class="text-muted"><i class="bi bi-clock me-1 text-primary"></i> Turnaround: 3 Days</small>
+                <a href="order.html?service_id=1" class="btn btn-violet btn-sm">Book & Customize</a>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100 d-flex flex-column">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1479064555552-3ef4979f8908?w=600&auto=format&fit=crop&q=80" alt="Bespoke Trouser Stitching">
+              <span class="card-tag">MEN</span>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold m-0 text-heading">Bespoke Trouser Stitching</h5>
+                <span class="price-badge">₹950.00</span>
+              </div>
+              <p class="text-muted small mb-3 flex-grow-1">Tailored formal trousers with premium lining and waistband adjustment.</p>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <small class="text-muted"><i class="bi bi-clock me-1 text-primary"></i> Turnaround: 4 Days</small>
+                <a href="order.html?service_id=2" class="btn btn-violet btn-sm">Book & Customize</a>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100 d-flex flex-column">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&auto=format&fit=crop&q=80" alt="3-Piece Designer Suit">
+              <span class="card-tag">MEN</span>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold m-0 text-heading">3-Piece Designer Suit</h5>
+                <span class="price-badge">₹6,500.00</span>
+              </div>
+              <p class="text-muted small mb-3 flex-grow-1">Italian cut 3-piece suit with canvas chest piece and peak lapel.</p>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <small class="text-muted"><i class="bi bi-clock me-1 text-primary"></i> Turnaround: 7 Days</small>
+                <a href="order.html?service_id=3" class="btn btn-violet btn-sm">Book & Customize</a>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100 d-flex flex-column">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&auto=format&fit=crop&q=80" alt="Royal Wedding Sherwani">
+              <span class="card-tag">MEN</span>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold m-0 text-heading">Royal Wedding Sherwani</h5>
+                <span class="price-badge">₹12,500.00</span>
+              </div>
+              <p class="text-muted small mb-3 flex-grow-1">Hand-embellished royal sherwani with zari embroidery and dupatta.</p>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <small class="text-muted"><i class="bi bi-clock me-1 text-primary"></i> Turnaround: 10 Days</small>
+                <a href="order.html?service_id=4" class="btn btn-violet btn-sm">Book & Customize</a>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100 d-flex flex-column">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&auto=format&fit=crop&q=80" alt="Designer Bridal Blouse">
+              <span class="card-tag">WOMEN</span>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold m-0 text-heading">Designer Bridal Blouse</h5>
+                <span class="price-badge">₹2,400.00</span>
+              </div>
+              <p class="text-muted small mb-3 flex-grow-1">Heavy zardosi embroidered saree blouse with padding and custom cutout.</p>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <small class="text-muted"><i class="bi bi-clock me-1 text-primary"></i> Turnaround: 5 Days</small>
+                <a href="order.html?service_id=5" class="btn btn-violet btn-sm">Book & Customize</a>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100 d-flex flex-column">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600&auto=format&fit=crop&q=80" alt="Anarkali Salwar Suit">
+              <span class="card-tag">WOMEN</span>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold m-0 text-heading">Anarkali Salwar Suit</h5>
+                <span class="price-badge">₹2,800.00</span>
+              </div>
+              <p class="text-muted small mb-3 flex-grow-1">Flared designer Anarkali suit with hand detailing and pleated pants.</p>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <small class="text-muted"><i class="bi bi-clock me-1 text-primary"></i> Turnaround: 5 Days</small>
+                <a href="order.html?service_id=6" class="btn btn-violet btn-sm">Book & Customize</a>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100 d-flex flex-column">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=600&auto=format&fit=crop&q=80" alt="Bridal Lehenga Choli">
+              <span class="card-tag">WOMEN</span>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold m-0 text-heading">Bridal Lehenga Choli</h5>
+                <span class="price-badge">₹14,500.00</span>
+              </div>
+              <p class="text-muted small mb-3 flex-grow-1">Custom grand royal lehenga with heavy zardosi work and dual dupattas.</p>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <small class="text-muted"><i class="bi bi-clock me-1 text-primary"></i> Turnaround: 12 Days</small>
+                <a href="order.html?service_id=7" class="btn btn-violet btn-sm">Book & Customize</a>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100 d-flex flex-column">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1583391733975-01e4df6063b4?w=600&auto=format&fit=crop&q=80" alt="Indo-Western Kurti">
+              <span class="card-tag">WOMEN</span>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold m-0 text-heading">Indo-Western Kurti</h5>
+                <span class="price-badge">₹1,200.00</span>
+              </div>
+              <p class="text-muted small mb-3 flex-grow-1">Modern asymmetrical designer kurti with premium stitch finish.</p>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <small class="text-muted"><i class="bi bi-clock me-1 text-primary"></i> Turnaround: 3 Days</small>
+                <a href="order.html?service_id=8" class="btn btn-violet btn-sm">Book & Customize</a>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100 d-flex flex-column">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=600&auto=format&fit=crop&q=80" alt="School &amp; Academy Uniform">
+              <span class="card-tag">KIDS</span>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold m-0 text-heading">School &amp; Academy Uniform</h5>
+                <span class="price-badge">₹650.00</span>
+              </div>
+              <p class="text-muted small mb-3 flex-grow-1">Durable, breathable uniform stitching with reinforced stitching seams.</p>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <small class="text-muted"><i class="bi bi-clock me-1 text-primary"></i> Turnaround: 2 Days</small>
+                <a href="order.html?service_id=9" class="btn btn-violet btn-sm">Book & Customize</a>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100 d-flex flex-column">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&auto=format&fit=crop&q=80" alt="Express Garment Alteration">
+              <span class="card-tag">SPECIAL</span>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="fw-bold m-0 text-heading">Express Garment Alteration</h5>
+                <span class="price-badge">₹350.00</span>
+              </div>
+              <p class="text-muted small mb-3 flex-grow-1">Reshaping, shortening, waist adjustment, and seam strengthening.</p>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <small class="text-muted"><i class="bi bi-clock me-1 text-primary"></i> Turnaround: 24 Hours</small>
+                <a href="order.html?service_id=10" class="btn btn-violet btn-sm">Book & Customize</a>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+  </div>
+</section>
+
+  <!-- Footer Section -->
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Col 1: Brand Info -->
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-brand">
+            <i class="bi bi-scissors"></i> TailorEase
+          </div>
+          <p class="text-muted mb-4">
+            "Perfect Stitching, Perfect Style."<br>
+            Bespoke tailoring, luxury fabrics, online measurement guides, and real-time order tracking for men, women & kids.
+          </p>
+          <div class="d-flex gap-3">
+            <a href="#" class="btn btn-outline-violet btn-sm rounded-circle" style="width:36px;height:36px;"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="btn btn-outline-violet btn-sm rounded-circle" style="width:36px;height:36px;"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="btn btn-outline-violet btn-sm rounded-circle" style="width:36px;height:36px;"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" class="btn btn-outline-violet btn-sm rounded-circle" style="width:36px;height:36px;"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="col-lg-2 col-md-6">
+          <h5 class="fw-bold mb-3 text-white">Quick Navigation</h5>
+          <a href="index.html" class="footer-link">Home</a>
+          <a href="about.html" class="footer-link">About Us</a>
+          <a href="services.html" class="footer-link">Our Services</a>
+          <a href="gallery.html" class="footer-link">Gallery</a>
+          <a href="fabrics.html" class="footer-link">Fabrics</a>
+          <a href="designs.html" class="footer-link">Design Catalog</a>
+        </div>
+
+        <!-- Col 3: Customer Care -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="fw-bold mb-3 text-white">Customer Services</h5>
+          <a href="measurement.html" class="footer-link">Online Measurement</a>
+          <a href="appointment.html" class="footer-link">Book Fitting Session</a>
+          <a href="order-track.html" class="footer-link">Track Your Order</a>
+          <a href="pricing.html" class="footer-link">Pricing & Plans</a>
+          <a href="contact.html" class="footer-link">Help & FAQs</a>
+          <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        </div>
+
+        <!-- Col 4: Newsletter -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="fw-bold mb-3 text-white">Newsletter</h5>
+          <p class="text-muted small">Subscribe for seasonal fashion trends, fabric care tips, and exclusive discount codes.</p>
+          <form onsubmit="event.preventDefault(); showToast('Thank you for subscribing to TailorEase!', 'success');" class="mt-2">
+            <div class="input-group mb-2">
+              <input type="email" class="form-control form-control-sm rounded-start-pill" placeholder="Enter your email" required>
+              <button class="btn btn-violet btn-sm rounded-end-pill px-3" type="submit"><i class="bi bi-send-fill"></i></button>
+            </div>
+          </form>
+          <div class="mt-3">
+            <small class="text-muted"><i class="bi bi-shield-check text-success me-1"></i> ISO 9001:2026 Certified Fitting Quality</small>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-4 border-secondary opacity-25">
+
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small text-muted">
+        <div>&copy; 2026 <strong>TailorEase</strong> – Smart Tailor Shop Website. All rights reserved.</div>
+        <div>Designed with <i class="bi bi-heart-fill text-danger ms-1 me-1"></i> for Premium Bespoke Couture</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Direct Chat Button -->
+  <a href="https://wa.me/919876543210?text=Hi%20TailorEase,%20I%20would%20like%20to%20inquire%20about%20custom%20stitching" 
+     target="_blank" 
+     class="position-fixed bottom-0 end-0 m-4 btn btn-success rounded-circle shadow-lg d-flex align-items-center justify-content-center"
+     style="width:55px;height:55px;z-index:999;"
+     title="Chat with Master Tailor on WhatsApp">
+    <i class="bi bi-whatsapp fs-3"></i>
+  </a>
+
+  <!-- Back to Top Button -->
+  <button onclick="window.scrollTo({top:0, behavior:'smooth'})" 
+          class="position-fixed bottom-0 start-0 m-4 btn btn-violet rounded-circle shadow p-0 d-flex align-items-center justify-content-center"
+          style="width:45px;height:45px;z-index:999;"
+          title="Back to Top">
+    <i class="bi bi-arrow-up fs-5"></i>
+  </button>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS Application Files -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/visualizer.js"></script>
+  <script src="assets/js/tracker.js"></script>
+  <script src="assets/js/ai-recommender.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

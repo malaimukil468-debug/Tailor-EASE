@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TailorEase – Smart Tailor Shop Website | Perfect Stitching, Perfect Style.</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons & FontAwesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Chart.js (for Dashboards) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/visualizer.css">
+</head>
+<body>
+
+  <!-- Sticky Luxury Navbar -->
+  <nav class="navbar navbar-expand-xl navbar-custom">
+    <div class="container-fluid px-lg-5">
+      <!-- Brand Logo -->
+      <a class="navbar-brand" href="index.html">
+        <i class="bi bi-scissors text-primary"></i>
+        <span>TailorEase</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#tailorEaseNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="tailorEaseNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link " href="index.html" data-i18n="nav_home">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html" data-i18n="nav_about">About</a></li>
+          <li class="nav-item"><a class="nav-link " href="services.html" data-i18n="nav_services">Services</a></li>
+          <li class="nav-item"><a class="nav-link " href="gallery.html" data-i18n="nav_gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link " href="fabrics.html" data-i18n="nav_fabrics">Fabrics</a></li>
+          <li class="nav-item"><a class="nav-link active" href="designs.html" data-i18n="nav_designs">Designs</a></li>
+          <li class="nav-item"><a class="nav-link " href="measurement.html" data-i18n="nav_measurement">Measurement</a></li>
+          <li class="nav-item"><a class="nav-link " href="appointment.html" data-i18n="nav_appointment">Appointment</a></li>
+          <li class="nav-item"><a class="nav-link " href="pricing.html" data-i18n="nav_pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link " href="blog.html" data-i18n="nav_blog">Blog</a></li>
+          <li class="nav-item"><a class="nav-link " href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+
+        <!-- Right Controls (Search, Theme, i18n, Auth) -->
+        <div class="d-flex align-items-center gap-2">
+          <!-- Search Icon Modal Trigger -->
+          <button class="btn btn-outline-violet rounded-circle p-2" data-bs-toggle="modal" data-bs-target="#searchModal" style="width:40px;height:40px;">
+            <i class="bi bi-search"></i>
+          </button>
+
+          <!-- Language Selector -->
+          <select id="language-selector" class="form-select form-select-sm rounded-pill" style="width:105px; border-color:var(--border-color);">
+            <option value="en">🌐 English</option>
+            <option value="ta">🌐 தமிழ்</option>
+          </select>
+
+          <!-- Dark Mode Toggle Button -->
+          <button id="dark-mode-toggle" class="btn btn-outline-violet rounded-circle p-2" style="width:40px;height:40px;">
+            <i class="bi bi-moon-stars-fill"></i>
+          </button>
+
+          <!-- User Auth / Dashboard Button -->
+                      <a href="login.html" class="btn btn-outline-violet">Login</a>
+            <a href="register.html" class="btn btn-violet d-none d-sm-inline-flex">Register</a>
+                  </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Global Search Overlay Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass-panel p-3">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold"><i class="bi bi-search text-primary me-2"></i>Search TailorEase</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form action="services.php" method="GET" class="d-flex gap-2">
+            <input type="text" name="q" class="form-control form-control-lg rounded-pill" placeholder="Search fabrics, suit styles, blouses, alterations...">
+            <button type="submit" class="btn btn-violet rounded-pill px-4">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<section class="py-5 bg-light border-bottom">
+  <div class="container text-center">
+    <span class="badge bg-secondary-lavender text-primary px-3 py-2 rounded-pill fw-bold text-uppercase">Interactive Outfit Visualizer</span>
+    <h1 class="fw-bold display-5 mt-2">Custom Design Catalog & Studio</h1>
+    <p class="text-muted max-w-700 mx-auto fs-5">Configure collar styles, sleeve cuffs, pockets, back cutouts, buttons, and embroidery in real-time.</p>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container" id="outfit-visualizer-app">
+    <div class="visualizer-container">
+      <!-- Left Column: Visual Preview Canvas -->
+      <div class="visualizer-preview-box">
+        <span class="badge bg-violet text-white px-3 py-2 rounded-pill mb-3">Live Interactive Preview</span>
+        
+        <!-- Garment Vector Canvas -->
+        <svg class="outfit-svg-canvas" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+          <!-- Torso Base -->
+          <path id="outfit-preview-path" d="M80,90 L220,90 L240,360 L60,360 Z" fill="#6A0DAD" transition="all 0.5s ease"/>
+          <!-- Shoulders -->
+          <path d="M80,90 L120,40 L180,40 L220,90 Z" fill="#550991"/>
+          <!-- Collar Cutout Overlay -->
+          <polygon points="120,40 180,40 150,110" fill="#FFFFFF" opacity="0.9"/>
+          <!-- Buttons overlay -->
+          <circle cx="150" cy="140" r="4" fill="#D4AF37"/>
+          <circle cx="150" cy="180" r="4" fill="#D4AF37"/>
+          <circle cx="150" cy="220" r="4" fill="#D4AF37"/>
+          <!-- Pocket outline -->
+          <rect x="180" y="150" width="30" height="35" rx="3" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+        </svg>
+
+        <!-- Color Swatch Selector -->
+        <div class="mt-4 text-center">
+          <small class="text-muted d-block fw-bold mb-2">Select Primary Garment Tone:</small>
+          <div class="d-flex justify-content-center gap-2">
+            <button class="color-swatch-btn btn rounded-circle p-0 active" data-color="#6A0DAD" style="width:28px;height:28px;background:#6A0DAD;border:2px solid #FFF;" title="Royal Violet"></button>
+            <button class="color-swatch-btn btn rounded-circle p-0" data-color="#1E1E2F" style="width:28px;height:28px;background:#1E1E2F;border:2px solid #FFF;" title="Midnight Slate"></button>
+            <button class="color-swatch-btn btn rounded-circle p-0" data-color="#800020" style="width:28px;height:28px;background:#800020;border:2px solid #FFF;" title="Burgundy"></button>
+            <button class="color-swatch-btn btn rounded-circle p-0" data-color="#1B4D3E" style="width:28px;height:28px;background:#1B4D3E;border:2px solid #FFF;" title="Emerald Green"></button>
+            <button class="color-swatch-btn btn rounded-circle p-0" data-color="#D4AF37" style="width:28px;height:28px;background:#D4AF37;border:2px solid #FFF;" title="Champagne Gold"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Option Selectors -->
+      <div>
+        <h4 class="fw-bold text-heading mb-4"><i class="bi bi-sliders text-primary me-2"></i>Customize Specifications</h4>
+
+        <!-- Option Group 1: Collar Style -->
+        <div class="custom-option-group">
+          <div class="custom-option-title"><i class="bi bi-tag-fill"></i> 1. Collar & Neck Style</div>
+          <div class="option-cards-grid">
+            <div class="option-card selected" data-group="collar" data-name="French Cutaway" data-cost="150">
+              <div class="option-icon"><i class="bi bi-bounding-box-circles"></i></div>
+              <div class="option-name">French Cutaway</div>
+              <div class="option-price">+₹150</div>
+            </div>
+            <div class="option-card" data-group="collar" data-name="Mandarin Collar" data-cost="100">
+              <div class="option-icon"><i class="bi bi-dash-lg"></i></div>
+              <div class="option-name">Mandarin / Band</div>
+              <div class="option-price">+₹100</div>
+            </div>
+            <div class="option-card" data-group="collar" data-name="Peak Lapel" data-cost="250">
+              <div class="option-icon"><i class="bi bi-caret-up-fill"></i></div>
+              <div class="option-name">Peak Lapel</div>
+              <div class="option-price">+₹250</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option Group 2: Sleeves & Cuffs -->
+        <div class="custom-option-group">
+          <div class="custom-option-title"><i class="bi bi-tag-fill"></i> 2. Sleeves & Cuff Style</div>
+          <div class="option-cards-grid">
+            <div class="option-card selected" data-group="sleeve" data-name="French Double Cuff" data-cost="200">
+              <div class="option-icon"><i class="bi bi-app"></i></div>
+              <div class="option-name">French Cuff</div>
+              <div class="option-price">+₹200</div>
+            </div>
+            <div class="option-card" data-group="sleeve" data-name="Single Barrel Cuff" data-cost="0">
+              <div class="option-icon"><i class="bi bi-square"></i></div>
+              <div class="option-name">Single Barrel</div>
+              <div class="option-price">Included</div>
+            </div>
+            <div class="option-card" data-group="sleeve" data-name="Short Sleeve" data-cost="0">
+              <div class="option-icon"><i class="bi bi-scissors"></i></div>
+              <div class="option-name">Short Sleeve</div>
+              <div class="option-price">Included</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option Group 3: Embroidery & Details -->
+        <div class="custom-option-group">
+          <div class="custom-option-title"><i class="bi bi-tag-fill"></i> 3. Hand Embroidery & Back Cutout</div>
+          <div class="option-cards-grid">
+            <div class="option-card" data-group="embroidery" data-name="Heavy Zardosi Work" data-cost="1500">
+              <div class="option-icon"><i class="bi bi-flower1"></i></div>
+              <div class="option-name">Zardosi Work</div>
+              <div class="option-price">+₹1,500</div>
+            </div>
+            <div class="option-card" data-group="embroidery" data-name="Dori Tassels Back" data-cost="300">
+              <div class="option-icon"><i class="bi bi-suit-heart-fill"></i></div>
+              <div class="option-name">Dori & Cutout</div>
+              <div class="option-price">+₹300</div>
+            </div>
+            <div class="option-card selected" data-group="embroidery" data-name="Clean Minimal Seams" data-cost="0">
+              <div class="option-icon"><i class="bi bi-check-circle"></i></div>
+              <div class="option-name">Clean Seams</div>
+              <div class="option-price">Included</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculated Live Total Bar -->
+        <div class="live-price-bar">
+          <div>
+            <span class="d-block small text-white-50">Estimated Stitching Total</span>
+            <span id="custom-summary-text" class="small fw-bold">French Cutaway, French Cuff</span>
+          </div>
+          <div class="d-flex align-items-center gap-3">
+            <span id="calculated-total-price" class="fs-3 fw-bold">₹1,850.00</span>
+            <a href="order.html?customized=1" class="btn btn-light text-primary fw-bold rounded-pill">Proceed to Order</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Footer Section -->
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Col 1: Brand Info -->
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-brand">
+            <i class="bi bi-scissors"></i> TailorEase
+          </div>
+          <p class="text-muted mb-4">
+            "Perfect Stitching, Perfect Style."<br>
+            Bespoke tailoring, luxury fabrics, online measurement guides, and real-time order tracking for men, women & kids.
+          </p>
+          <div class="d-flex gap-3">
+            <a href="#" class="btn btn-outline-violet btn-sm rounded-circle" style="width:36px;height:36px;"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="btn btn-outline-violet btn-sm rounded-circle" style="width:36px;height:36px;"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="btn btn-outline-violet btn-sm rounded-circle" style="width:36px;height:36px;"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" class="btn btn-outline-violet btn-sm rounded-circle" style="width:36px;height:36px;"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="col-lg-2 col-md-6">
+          <h5 class="fw-bold mb-3 text-white">Quick Navigation</h5>
+          <a href="index.html" class="footer-link">Home</a>
+          <a href="about.html" class="footer-link">About Us</a>
+          <a href="services.html" class="footer-link">Our Services</a>
+          <a href="gallery.html" class="footer-link">Gallery</a>
+          <a href="fabrics.html" class="footer-link">Fabrics</a>
+          <a href="designs.html" class="footer-link">Design Catalog</a>
+        </div>
+
+        <!-- Col 3: Customer Care -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="fw-bold mb-3 text-white">Customer Services</h5>
+          <a href="measurement.html" class="footer-link">Online Measurement</a>
+          <a href="appointment.html" class="footer-link">Book Fitting Session</a>
+          <a href="order-track.html" class="footer-link">Track Your Order</a>
+          <a href="pricing.html" class="footer-link">Pricing & Plans</a>
+          <a href="contact.html" class="footer-link">Help & FAQs</a>
+          <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        </div>
+
+        <!-- Col 4: Newsletter -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="fw-bold mb-3 text-white">Newsletter</h5>
+          <p class="text-muted small">Subscribe for seasonal fashion trends, fabric care tips, and exclusive discount codes.</p>
+          <form onsubmit="event.preventDefault(); showToast('Thank you for subscribing to TailorEase!', 'success');" class="mt-2">
+            <div class="input-group mb-2">
+              <input type="email" class="form-control form-control-sm rounded-start-pill" placeholder="Enter your email" required>
+              <button class="btn btn-violet btn-sm rounded-end-pill px-3" type="submit"><i class="bi bi-send-fill"></i></button>
+            </div>
+          </form>
+          <div class="mt-3">
+            <small class="text-muted"><i class="bi bi-shield-check text-success me-1"></i> ISO 9001:2026 Certified Fitting Quality</small>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-4 border-secondary opacity-25">
+
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small text-muted">
+        <div>&copy; 2026 <strong>TailorEase</strong> – Smart Tailor Shop Website. All rights reserved.</div>
+        <div>Designed with <i class="bi bi-heart-fill text-danger ms-1 me-1"></i> for Premium Bespoke Couture</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Direct Chat Button -->
+  <a href="https://wa.me/919876543210?text=Hi%20TailorEase,%20I%20would%20like%20to%20inquire%20about%20custom%20stitching" 
+     target="_blank" 
+     class="position-fixed bottom-0 end-0 m-4 btn btn-success rounded-circle shadow-lg d-flex align-items-center justify-content-center"
+     style="width:55px;height:55px;z-index:999;"
+     title="Chat with Master Tailor on WhatsApp">
+    <i class="bi bi-whatsapp fs-3"></i>
+  </a>
+
+  <!-- Back to Top Button -->
+  <button onclick="window.scrollTo({top:0, behavior:'smooth'})" 
+          class="position-fixed bottom-0 start-0 m-4 btn btn-violet rounded-circle shadow p-0 d-flex align-items-center justify-content-center"
+          style="width:45px;height:45px;z-index:999;"
+          title="Back to Top">
+    <i class="bi bi-arrow-up fs-5"></i>
+  </button>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS Application Files -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/visualizer.js"></script>
+  <script src="assets/js/tracker.js"></script>
+  <script src="assets/js/ai-recommender.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

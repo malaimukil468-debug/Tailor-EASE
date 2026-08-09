@@ -1,0 +1,105 @@
+/* TailorEase Interactive Customizer Stylesheet */
+
+.visualizer-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  background: var(--bg-card);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+}
+
+.visualizer-preview-box {
+  background: radial-gradient(circle at center, rgba(230, 230, 250, 0.4) 0%, rgba(106, 13, 173, 0.05) 100%);
+  border-radius: var(--radius-md);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 420px;
+}
+
+.outfit-svg-canvas {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+}
+
+.custom-option-group {
+  margin-bottom: 24px;
+}
+
+.custom-option-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--primary-violet);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.option-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.option-card {
+  background: var(--bg-card-solid);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.option-card:hover, .option-card.selected {
+  border-color: var(--primary-violet);
+  background: rgba(106, 13, 173, 0.08);
+  transform: translateY(-3px);
+}
+
+.option-card.selected {
+  box-shadow: 0 0 0 2px var(--primary-violet);
+}
+
+.option-icon {
+  font-size: 1.8rem;
+  color: var(--primary-violet);
+  margin-bottom: 6px;
+}
+
+.option-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.option-price {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.live-price-bar {
+  background: linear-gradient(135deg, var(--primary-violet), var(--accent-purple));
+  color: #FFF;
+  padding: 16px 24px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  box-shadow: 0 8px 25px rgba(106, 13, 173, 0.35);
+}
+
+@media (max-width: 991px) {
+  .visualizer-container {
+    grid-template-columns: 1fr;
+  }
+}

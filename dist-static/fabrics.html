@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TailorEase – Smart Tailor Shop Website | Perfect Stitching, Perfect Style.</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons & FontAwesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Chart.js (for Dashboards) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/visualizer.css">
+</head>
+<body>
+
+  <!-- Sticky Luxury Navbar -->
+  <nav class="navbar navbar-expand-xl navbar-custom">
+    <div class="container-fluid px-lg-5">
+      <!-- Brand Logo -->
+      <a class="navbar-brand" href="index.html">
+        <i class="bi bi-scissors text-primary"></i>
+        <span>TailorEase</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#tailorEaseNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="tailorEaseNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link " href="index.html" data-i18n="nav_home">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html" data-i18n="nav_about">About</a></li>
+          <li class="nav-item"><a class="nav-link " href="services.html" data-i18n="nav_services">Services</a></li>
+          <li class="nav-item"><a class="nav-link " href="gallery.html" data-i18n="nav_gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link active" href="fabrics.html" data-i18n="nav_fabrics">Fabrics</a></li>
+          <li class="nav-item"><a class="nav-link " href="designs.html" data-i18n="nav_designs">Designs</a></li>
+          <li class="nav-item"><a class="nav-link " href="measurement.html" data-i18n="nav_measurement">Measurement</a></li>
+          <li class="nav-item"><a class="nav-link " href="appointment.html" data-i18n="nav_appointment">Appointment</a></li>
+          <li class="nav-item"><a class="nav-link " href="pricing.html" data-i18n="nav_pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link " href="blog.html" data-i18n="nav_blog">Blog</a></li>
+          <li class="nav-item"><a class="nav-link " href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+
+        <!-- Right Controls (Search, Theme, i18n, Auth) -->
+        <div class="d-flex align-items-center gap-2">
+          <!-- Search Icon Modal Trigger -->
+          <button class="btn btn-outline-violet rounded-circle p-2" data-bs-toggle="modal" data-bs-target="#searchModal" style="width:40px;height:40px;">
+            <i class="bi bi-search"></i>
+          </button>
+
+          <!-- Language Selector -->
+          <select id="language-selector" class="form-select form-select-sm rounded-pill" style="width:105px; border-color:var(--border-color);">
+            <option value="en">🌐 English</option>
+            <option value="ta">🌐 தமிழ்</option>
+          </select>
+
+          <!-- Dark Mode Toggle Button -->
+          <button id="dark-mode-toggle" class="btn btn-outline-violet rounded-circle p-2" style="width:40px;height:40px;">
+            <i class="bi bi-moon-stars-fill"></i>
+          </button>
+
+          <!-- User Auth / Dashboard Button -->
+                      <a href="login.html" class="btn btn-outline-violet">Login</a>
+            <a href="register.html" class="btn btn-violet d-none d-sm-inline-flex">Register</a>
+                  </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Global Search Overlay Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass-panel p-3">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold"><i class="bi bi-search text-primary me-2"></i>Search TailorEase</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form action="services.php" method="GET" class="d-flex gap-2">
+            <input type="text" name="q" class="form-control form-control-lg rounded-pill" placeholder="Search fabrics, suit styles, blouses, alterations...">
+            <button type="submit" class="btn btn-violet rounded-pill px-4">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<section class="py-5 bg-light border-bottom">
+  <div class="container text-center">
+    <span class="badge bg-secondary-lavender text-primary px-3 py-2 rounded-pill fw-bold text-uppercase">Material Excellence</span>
+    <h1 class="fw-bold display-5 mt-2">Luxury Fabric Collection</h1>
+    <p class="text-muted max-w-700 mx-auto fs-5">Sourced from renowned mills in Egypt, Belgium, Banaras, and Kashmir. Inspect thread counts, texture, and color palettes.</p>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+              <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100 d-flex flex-column">
+            <div class="card-img-wrap" style="height:220px;">
+              <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=600&auto=format&fit=crop&q=80" alt="Egyptian Giza Cotton">
+              <span class="card-tag bg-success">IN STOCK</span>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div>
+                  <h5 class="fw-bold text-heading m-0">Egyptian Giza Cotton</h5>
+                  <small class="text-primary fw-bold">Cotton Fabric</small>
+                </div>
+                <div class="text-end">
+                  <span class="price-badge">₹650.00</span>
+                  <small class="d-block text-muted">per meter</small>
+                </div>
+              </div>
+              
+              <p class="text-muted small mb-3 flex-grow-1">Ultra-breathable 100% long-staple cotton perfect for formal shirts.</p>
+
+              <!-- Color Swatches -->
+              <div class="mb-3">
+                <small class="text-muted d-block fw-bold mb-1">Available Color Palette:</small>
+                <div class="d-flex gap-2">
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#FFFFFF;border:1px solid rgba(0,0,0,0.15);" title="#FFFFFF"></span>
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#E6E6FA;border:1px solid rgba(0,0,0,0.15);" title="#E6E6FA"></span>
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#1E1E2F;border:1px solid rgba(0,0,0,0.15);" title="#1E1E2F"></span>
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#87CEEB;border:1px solid rgba(0,0,0,0.15);" title="#87CEEB"></span>
+                                  </div>
+              </div>
+
+              <div class="d-flex gap-2 pt-3 border-top">
+                <button class="btn btn-outline-violet btn-sm p-2 rounded-circle" onclick="showToast('Added fabric to your wishlist!', 'success')" title="Add to Wishlist">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <a href="order.html?fabric_id=1" class="btn btn-violet btn-sm flex-grow-1">
+                  <i class="bi bi-scissors me-1"></i> Select For Stitching
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100 d-flex flex-column">
+            <div class="card-img-wrap" style="height:220px;">
+              <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&auto=format&fit=crop&q=80" alt="Banarasi Raw Silk">
+              <span class="card-tag bg-success">IN STOCK</span>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div>
+                  <h5 class="fw-bold text-heading m-0">Banarasi Raw Silk</h5>
+                  <small class="text-primary fw-bold">Silk Fabric</small>
+                </div>
+                <div class="text-end">
+                  <span class="price-badge">₹1,450.00</span>
+                  <small class="d-block text-muted">per meter</small>
+                </div>
+              </div>
+              
+              <p class="text-muted small mb-3 flex-grow-1">Lustrous, pure silk with golden zari weave for grand attires.</p>
+
+              <!-- Color Swatches -->
+              <div class="mb-3">
+                <small class="text-muted d-block fw-bold mb-1">Available Color Palette:</small>
+                <div class="d-flex gap-2">
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#6A0DAD;border:1px solid rgba(0,0,0,0.15);" title="#6A0DAD"></span>
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#D4AF37;border:1px solid rgba(0,0,0,0.15);" title="#D4AF37"></span>
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#C0392B;border:1px solid rgba(0,0,0,0.15);" title="#C0392B"></span>
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#27AE60;border:1px solid rgba(0,0,0,0.15);" title="#27AE60"></span>
+                                  </div>
+              </div>
+
+              <div class="d-flex gap-2 pt-3 border-top">
+                <button class="btn btn-outline-violet btn-sm p-2 rounded-circle" onclick="showToast('Added fabric to your wishlist!', 'success')" title="Add to Wishlist">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <a href="order.html?fabric_id=2" class="btn btn-violet btn-sm flex-grow-1">
+                  <i class="bi bi-scissors me-1"></i> Select For Stitching
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100 d-flex flex-column">
+            <div class="card-img-wrap" style="height:220px;">
+              <img src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=600&auto=format&fit=crop&q=80" alt="Belgian Pure Linen">
+              <span class="card-tag bg-success">IN STOCK</span>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div>
+                  <h5 class="fw-bold text-heading m-0">Belgian Pure Linen</h5>
+                  <small class="text-primary fw-bold">Linen Fabric</small>
+                </div>
+                <div class="text-end">
+                  <span class="price-badge">₹850.00</span>
+                  <small class="d-block text-muted">per meter</small>
+                </div>
+              </div>
+              
+              <p class="text-muted small mb-3 flex-grow-1">Classic textured pure linen with high moisture absorption.</p>
+
+              <!-- Color Swatches -->
+              <div class="mb-3">
+                <small class="text-muted d-block fw-bold mb-1">Available Color Palette:</small>
+                <div class="d-flex gap-2">
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#F5F5DC;border:1px solid rgba(0,0,0,0.15);" title="#F5F5DC"></span>
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#D2B48C;border:1px solid rgba(0,0,0,0.15);" title="#D2B48C"></span>
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#808080;border:1px solid rgba(0,0,0,0.15);" title="#808080"></span>
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#FFFFFF;border:1px solid rgba(0,0,0,0.15);" title="#FFFFFF"></span>
+                                  </div>
+              </div>
+
+              <div class="d-flex gap-2 pt-3 border-top">
+                <button class="btn btn-outline-violet btn-sm p-2 rounded-circle" onclick="showToast('Added fabric to your wishlist!', 'success')" title="Add to Wishlist">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <a href="order.html?fabric_id=3" class="btn btn-violet btn-sm flex-grow-1">
+                  <i class="bi bi-scissors me-1"></i> Select For Stitching
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100 d-flex flex-column">
+            <div class="card-img-wrap" style="height:220px;">
+              <img src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=600&auto=format&fit=crop&q=80" alt="Royal Velvet">
+              <span class="card-tag bg-success">IN STOCK</span>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div>
+                  <h5 class="fw-bold text-heading m-0">Royal Velvet</h5>
+                  <small class="text-primary fw-bold">Velvet Fabric</small>
+                </div>
+                <div class="text-end">
+                  <span class="price-badge">₹1,200.00</span>
+                  <small class="d-block text-muted">per meter</small>
+                </div>
+              </div>
+              
+              <p class="text-muted small mb-3 flex-grow-1">Plush, dense velvet fabric ideal for blazers and sherwanis.</p>
+
+              <!-- Color Swatches -->
+              <div class="mb-3">
+                <small class="text-muted d-block fw-bold mb-1">Available Color Palette:</small>
+                <div class="d-flex gap-2">
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#4A0033;border:1px solid rgba(0,0,0,0.15);" title="#4A0033"></span>
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#0A1128;border:1px solid rgba(0,0,0,0.15);" title="#0A1128"></span>
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#1B4D3E;border:1px solid rgba(0,0,0,0.15);" title="#1B4D3E"></span>
+                                  </div>
+              </div>
+
+              <div class="d-flex gap-2 pt-3 border-top">
+                <button class="btn btn-outline-violet btn-sm p-2 rounded-circle" onclick="showToast('Added fabric to your wishlist!', 'success')" title="Add to Wishlist">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <a href="order.html?fabric_id=4" class="btn btn-violet btn-sm flex-grow-1">
+                  <i class="bi bi-scissors me-1"></i> Select For Stitching
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="col-lg-4 col-md-6">
+          <div class="glass-card h-100 d-flex flex-column">
+            <div class="card-img-wrap" style="height:220px;">
+              <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=600&auto=format&fit=crop&q=80" alt="Pure Mulberry Satin">
+              <span class="card-tag bg-success">IN STOCK</span>
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div>
+                  <h5 class="fw-bold text-heading m-0">Pure Mulberry Satin</h5>
+                  <small class="text-primary fw-bold">Satin Fabric</small>
+                </div>
+                <div class="text-end">
+                  <span class="price-badge">₹950.00</span>
+                  <small class="d-block text-muted">per meter</small>
+                </div>
+              </div>
+              
+              <p class="text-muted small mb-3 flex-grow-1">Silky smooth high-gloss satin that drapes fluidly.</p>
+
+              <!-- Color Swatches -->
+              <div class="mb-3">
+                <small class="text-muted d-block fw-bold mb-1">Available Color Palette:</small>
+                <div class="d-flex gap-2">
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#E6E6FA;border:1px solid rgba(0,0,0,0.15);" title="#E6E6FA"></span>
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#FFC0CB;border:1px solid rgba(0,0,0,0.15);" title="#FFC0CB"></span>
+                                      <span class="rounded-circle shadow-sm" style="width:22px;height:22px;background:#FFD700;border:1px solid rgba(0,0,0,0.15);" title="#FFD700"></span>
+                                  </div>
+              </div>
+
+              <div class="d-flex gap-2 pt-3 border-top">
+                <button class="btn btn-outline-violet btn-sm p-2 rounded-circle" onclick="showToast('Added fabric to your wishlist!', 'success')" title="Add to Wishlist">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <a href="order.html?fabric_id=5" class="btn btn-violet btn-sm flex-grow-1">
+                  <i class="bi bi-scissors me-1"></i> Select For Stitching
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+  </div>
+</section>
+
+  <!-- Footer Section -->
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Col 1: Brand Info -->
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-brand">
+            <i class="bi bi-scissors"></i> TailorEase
+          </div>
+          <p class="text-muted mb-4">
+            "Perfect Stitching, Perfect Style."<br>
+            Bespoke tailoring, luxury fabrics, online measurement guides, and real-time order tracking for men, women & kids.
+          </p>
+          <div class="d-flex gap-3">
+            <a href="#" class="btn btn-outline-violet btn-sm rounded-circle" style="width:36px;height:36px;"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="btn btn-outline-violet btn-sm rounded-circle" style="width:36px;height:36px;"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="btn btn-outline-violet btn-sm rounded-circle" style="width:36px;height:36px;"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" class="btn btn-outline-violet btn-sm rounded-circle" style="width:36px;height:36px;"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="col-lg-2 col-md-6">
+          <h5 class="fw-bold mb-3 text-white">Quick Navigation</h5>
+          <a href="index.html" class="footer-link">Home</a>
+          <a href="about.html" class="footer-link">About Us</a>
+          <a href="services.html" class="footer-link">Our Services</a>
+          <a href="gallery.html" class="footer-link">Gallery</a>
+          <a href="fabrics.html" class="footer-link">Fabrics</a>
+          <a href="designs.html" class="footer-link">Design Catalog</a>
+        </div>
+
+        <!-- Col 3: Customer Care -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="fw-bold mb-3 text-white">Customer Services</h5>
+          <a href="measurement.html" class="footer-link">Online Measurement</a>
+          <a href="appointment.html" class="footer-link">Book Fitting Session</a>
+          <a href="order-track.html" class="footer-link">Track Your Order</a>
+          <a href="pricing.html" class="footer-link">Pricing & Plans</a>
+          <a href="contact.html" class="footer-link">Help & FAQs</a>
+          <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        </div>
+
+        <!-- Col 4: Newsletter -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="fw-bold mb-3 text-white">Newsletter</h5>
+          <p class="text-muted small">Subscribe for seasonal fashion trends, fabric care tips, and exclusive discount codes.</p>
+          <form onsubmit="event.preventDefault(); showToast('Thank you for subscribing to TailorEase!', 'success');" class="mt-2">
+            <div class="input-group mb-2">
+              <input type="email" class="form-control form-control-sm rounded-start-pill" placeholder="Enter your email" required>
+              <button class="btn btn-violet btn-sm rounded-end-pill px-3" type="submit"><i class="bi bi-send-fill"></i></button>
+            </div>
+          </form>
+          <div class="mt-3">
+            <small class="text-muted"><i class="bi bi-shield-check text-success me-1"></i> ISO 9001:2026 Certified Fitting Quality</small>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-4 border-secondary opacity-25">
+
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small text-muted">
+        <div>&copy; 2026 <strong>TailorEase</strong> – Smart Tailor Shop Website. All rights reserved.</div>
+        <div>Designed with <i class="bi bi-heart-fill text-danger ms-1 me-1"></i> for Premium Bespoke Couture</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Direct Chat Button -->
+  <a href="https://wa.me/919876543210?text=Hi%20TailorEase,%20I%20would%20like%20to%20inquire%20about%20custom%20stitching" 
+     target="_blank" 
+     class="position-fixed bottom-0 end-0 m-4 btn btn-success rounded-circle shadow-lg d-flex align-items-center justify-content-center"
+     style="width:55px;height:55px;z-index:999;"
+     title="Chat with Master Tailor on WhatsApp">
+    <i class="bi bi-whatsapp fs-3"></i>
+  </a>
+
+  <!-- Back to Top Button -->
+  <button onclick="window.scrollTo({top:0, behavior:'smooth'})" 
+          class="position-fixed bottom-0 start-0 m-4 btn btn-violet rounded-circle shadow p-0 d-flex align-items-center justify-content-center"
+          style="width:45px;height:45px;z-index:999;"
+          title="Back to Top">
+    <i class="bi bi-arrow-up fs-5"></i>
+  </button>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS Application Files -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/visualizer.js"></script>
+  <script src="assets/js/tracker.js"></script>
+  <script src="assets/js/ai-recommender.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
